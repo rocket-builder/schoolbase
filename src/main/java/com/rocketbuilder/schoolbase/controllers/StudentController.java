@@ -46,7 +46,7 @@ public class StudentController {
         return "student-single";
     }
 
-    @PostMapping("/student/{id}/avatar")
+    @PostMapping("/student/{id}/avatar/add")
     @ResponseBody
     public String setAvatar(@PathVariable("id") long id, MultipartFile file) throws IOException {
         Student student = studentRepos.findById(id);

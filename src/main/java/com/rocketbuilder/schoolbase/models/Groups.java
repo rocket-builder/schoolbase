@@ -1,8 +1,5 @@
 package com.rocketbuilder.schoolbase.models;
 
-import com.rocketbuilder.schoolbase.enums.GroupDigit;
-import com.rocketbuilder.schoolbase.enums.GroupLetter;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
