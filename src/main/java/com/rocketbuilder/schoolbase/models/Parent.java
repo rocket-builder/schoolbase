@@ -1,5 +1,7 @@
 package com.rocketbuilder.schoolbase.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,6 +27,16 @@ public class Parent {
         this.job = job;
         this.number = number;
     }
+
+    public Parent(String firstname, String surname, String middlename, String job, String number) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.middlename = middlename;
+        this.job = job;
+        this.number = number;
+    }
+
+    public Parent() {}
 
     public String getFirstname() { return firstname; }
     public void setFirstname(String firstname) { firstname = firstname; }
