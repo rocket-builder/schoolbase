@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface TeacherRepos extends CrudRepository <Teacher, Long> {
 
     Teacher findDistinctBySurname(String surname);
+    Teacher findById(long id);
 }

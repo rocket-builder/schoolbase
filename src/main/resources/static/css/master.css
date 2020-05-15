@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Rubik Mono One', sans-serif !important;
+    color: rgba(0,0,0,.87);
+}
+body {
+    color: rgba(0,0,0,.87) !important;
+}
+
+a {
+    text-decoration: none !important;
+    background-image: linear-gradient(#2185d0, #2185d0) !important;
+    background-position: 0% 100% !important;
+    background-repeat: no-repeat !important;
+    background-size: 0% 4px !important;
+    transition: background-size .3s !important;
+}
+a:hover, a:focus {
+    background-size: 100% 4px !important;
+}
+
+.group.card{
+    color:white;
+    font-size: 4em;
+    padding: 0em 0em 5em 0.2em;
+    border: 3px solid white;
+    user-select: none;
+    cursor: pointer;
+}

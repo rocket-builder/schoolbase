@@ -9,10 +9,14 @@
 <body>
 
 
-login
-
+<input id="login-username" placeholder="login"/>
+<input id="login-password" placeholder="password">
+<button id="btn-login">Login</button>
+<div id="login-error"></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script th:src="@{js/master.js}"></script>
+<script th:src="@{js/handlers/login-handler.js}"></script>
 </body>
 </html>

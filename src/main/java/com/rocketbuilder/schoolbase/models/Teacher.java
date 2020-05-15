@@ -21,6 +21,8 @@ public class Teacher {
     private String password;
     private String login;
 
+    private UserRole role = UserRole.TEACHER;
+
     public Teacher(Groups groups, String firstname, String surname, String middlename, String number, String avatarPath, String login, String password) {
         this.groups = groups;
         this.firstname = firstname;
@@ -58,4 +60,7 @@ public class Teacher {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public UserRole getRole() { return role; }
+    public void setRole(UserRole role) { this.role = role; }
 }

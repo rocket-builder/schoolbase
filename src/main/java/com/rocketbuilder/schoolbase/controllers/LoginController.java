@@ -22,6 +22,11 @@ public class LoginController {
     @Autowired
     UserRepos userRepos;
 
+    @GetMapping("/login")
+    public String loginStart() {
+        return "login";
+    }
+
     @PostMapping("/login")
     @ResponseBody
     public String login(@RequestParam String login, @RequestParam String password, HttpSession session) {
