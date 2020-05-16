@@ -33,3 +33,13 @@ a.underlined:hover, a.underlined:focus {
     user-select: none;
     cursor: pointer;
 }
+
+.group.card.link{
+    color: white;
+
+}
+
+h2 span {
+    padding: 0 10px;
+    background: rgba(37,219,237,0.8);
+}

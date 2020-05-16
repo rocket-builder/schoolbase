@@ -3,6 +3,8 @@ package com.rocketbuilder.schoolbase.controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rocketbuilder.schoolbase.ParentDeserializer;
+import com.rocketbuilder.schoolbase.StudentDetailsSerializer;
+import com.rocketbuilder.schoolbase.StudentSerializer;
 import com.rocketbuilder.schoolbase.Upload;
 import com.rocketbuilder.schoolbase.enums.GymGroup;
 import com.rocketbuilder.schoolbase.enums.HealthGroup;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
@@ -32,28 +37,35 @@ public class StudentController {
     @Autowired
     UserRepos userRepos;
 
+    private static String defFileDir = "/img/";
+    private static String fileRootDir =  "./src/main/resources/static/img/";
+
     @GetMapping("/student/{id}")
+    @ResponseBody
     public String studentById(@PathVariable("id") long id, Model model, HttpSession session) {
         if(session.getAttribute("userId") == null) {
-            return "no-permisson";
-        }
-        if(!studentRepos.existsById(id)) {
-            return "not-founded";
+            return new Gson().toJson(new Response("Нет полномочий", true));
         }
 
         Student student = studentRepos.findById(id);
-        model.addAttribute("student", student);
-        return "student-single";
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Student.class, new StudentDetailsSerializer())
+                .create();
+        return gson.toJson(student);
     }
 
     @PostMapping("/student/{id}/avatar/add")
     @ResponseBody
-    public String setAvatar(@PathVariable("id") long id, MultipartFile file) throws IOException {
+    public String setAvatar(@PathVariable("id") long id, @RequestParam MultipartFile file) throws IOException {
         Student student = studentRepos.findById(id);
-        student.setAvatarPath(Upload.avatar(file));
+
+        String path = Upload.avatar(file);
+        student.setAvatarPath(path);
 
         studentRepos.save(student);
-        return new Gson().toJson(new Response("Успешно обновлено", false));
+        return new Gson().toJson(new Response("Успешно обновлено", false, path));
     }
 
     @PostMapping("/student/{id}/parent/add")
@@ -88,6 +100,7 @@ public class StudentController {
 
         Groups group = groupRepos.findDistinctByTitle(grouptitle);
         Student student = new Student(group, firstname, surname, middlename, hobby, familychildcount, HealthGroup.valueOf(healthgroup.toUpperCase()), GymGroup.valueOf(gymgroup.toUpperCase()), diseases, birthday);
+        student.setAvatarPath("/res/default-avatar.png");
 
         studentRepos.save(student);
         return new Gson().toJson(new Response("Успешно добавлено", false));
@@ -103,7 +116,11 @@ public class StudentController {
         }
 
         Student student = studentRepos.findById(id);
-        return new Gson().toJson(student);
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Student.class, new StudentSerializer())
+                .create();
+        return gson.toJson(student);
     }
 
     @PostMapping("/student/{id}/save")
@@ -146,5 +163,4 @@ public class StudentController {
 
         return new Gson().toJson(new Response("Успешно удалено", false));
     }
-
 }

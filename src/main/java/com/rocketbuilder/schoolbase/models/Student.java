@@ -1,5 +1,6 @@
 package com.rocketbuilder.schoolbase.models;
 
+import com.google.gson.annotations.SerializedName;
 import com.rocketbuilder.schoolbase.enums.GymGroup;
 import com.rocketbuilder.schoolbase.enums.HealthGroup;
 
@@ -32,7 +33,7 @@ public class Student {
     private String diseases;
 
     private Date birthday;
-    private String avatarPath = "/img/defaultAvatar.png";
+    private String avatarPath = "/res/default-avatar.png";
 
     public Student() {}
 

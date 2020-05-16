@@ -16,16 +16,45 @@
 <div style="background: yellow;">
     <h1 style="padding: 10em;" th:text="${group.title}"></h1>
 </div>
-<div class="ui four column stackable grid" style="margin: 0;" th:if="${group.getStudents().size() > 0}">
-    <a th:each="student : ${group.getStudents()}" class="ui four wide column" th:href="'/student/'+${student.id}" style="background: red;">
-        <h2 class="group card" style="font-size: 1.5em;padding-bottom: 10em;" th:text="${student.surname}+' '+${student.firstname}+', '+${student.getAge()}+' лет'"></h2>
-    </a>
+<div class="ui four column stackable grid" style="margin: 0;background: #fdfdfd;" th:if="${group.getStudents().size() > 0}">
+    <div th:each="student : ${group.getStudents()}" class="ui four wide column" th:id="'student'+${student.id}" style="padding: 0.5em;background: white;border: solid #fdfdfd 0.5em;">
+        <h2 class="group card" th:id="'photo'+${student.id}" th:style="
+        'background:url('+${student.avatarPath}+');'+
+        'background-size:cover;'+
+        'background-repeat:no-repeat;'+
+        'background-position:center center;'+
+        'font-size:1.25em;padding-bottom:18em;'
+        ">
+            <span>
+                <a class="btn-student-single" style="color: black;line-height: 0.5em;cursor: pointer;" th:text="${student.surname}+' '+${student.firstname}+', '+${student.getAge()}+' лет'" th:id="'preview'+${student.id}"></a>
+            </span>
+        </h2>
+        <br>
+        <div th:if="${session.role.toString() == 'ADMIN'}">
+            <i class="pencil icon btn-student-edit-modal" th:id="'edit'+${student.id}"></i>
+            <i class="trash icon btn-student-delete-modal" th:id="'del'+${student.id}"></i>
+            <i class="users icon" th:id="'parents'+${student.id}"></i>
+
+            <input type="file" th:id="'avatar'+${student.id}" style="display: none;" class="inp-avatar" enctype="multipart/form-data"/>
+            <label th:for="'avatar'+${student.id}">
+                <i class="photo icon"></i>
+            </label>
+        </div>
+    </div>
 </div>
 <h3 style="margin: 0;padding: 12em;color: rgba(0,0,0,.2);background: #c4c4c40a;text-align: center;" th:if="${group.getStudents().size() == 0}">
     В этом классе еще нет учащихся :(
 </h3>
 <div th:insert="components/footer :: footer"></div>
+
+<div th:insert="components/student-edit-modal :: modal"></div>
+<div th:insert="components/approve-modal :: #approve-modal"></div>
+<div th:insert="components/student-single-modal :: #student-single-modal"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script th:src="@{/js/master.js}"></script>
+<script th:src="@{/js/handlers/student-edit-handler.js}"></script>
+<script th:src="@{/js/handlers/student-add-handler.js}"></script>
+<script th:src="@{/js/handlers/student-single-handler.js}"></script>
 </body>
 </html>

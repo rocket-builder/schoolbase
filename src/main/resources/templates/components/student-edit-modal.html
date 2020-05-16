@@ -1,0 +1,118 @@
+<div class="ui modal" id="modal-student-edit" th:fragment="modal">
+    <i class="close icon"></i>
+    <h3 class="header">
+        Редактирование учащегося
+    </h3>
+    <div class="content">
+        <div class="ui form">
+            <div class="fields">
+                <div class="field">
+                    <label>Имя</label>
+                    <input type="text" placeholder="Введите имя" id="student-edit-firstname">
+                </div>
+                <div class="field">
+                    <label>Фамилия</label>
+                    <input type="text" placeholder="Введите фамилию" id="student-edit-surname">
+                </div>
+                <div class="field">
+                    <label>Отчество</label>
+                    <input type="text" placeholder="Введите отчество" id="student-edit-middlename">
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Класс</label>
+                    <select class="ui dropdown" id="student-edit-group-digit">
+                        <option value="1">Первый</option>
+                        <option value="2">Второй</option>
+                        <option value="3">Третий</option>
+                        <option value="4">Четвертый</option>
+                        <option value="5">Пятый</option>
+                        <option value="6">Шестой</option>
+                        <option value="7">Седьмой</option>
+                        <option value="8">Восьмой</option>
+                        <option value="9">Девятый</option>
+                        <option value="10">Десятый</option>
+                        <option value="11">Одинадцатый</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Буква</label>
+                    <select class="ui dropdown" id="student-edit-group-letter">
+                        <option value="А">А класс</option>
+                        <option value="Б">Б класс</option>
+                        <option value="В">В класс</option>
+                        <option value="Г">Г класс</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label>Хобби</label>
+                <textarea rows="2" id="student-edit-hobby"></textarea>
+            </div>
+
+            <div class="field">
+                <label>Группа по физкультуре</label>
+                <select class="ui dropdown" id="student-edit-gym-group">
+                    <option value="MAIN">Основная</option>
+                    <option value="PREPARE">Подготовительная</option>
+                    <option value="FREE">Освобождение</option>
+                    <option value="THERAPTHY">ЛФК</option>
+                    <option value="SPECIAL">СМГ</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Группа здоровья</label>
+                <select class="ui dropdown" id="student-edit-health-group">
+                    <option value="FIRST">Первая</option>
+                    <option value="SECOND">Вторая</option>
+                    <option value="THIRD">Третья</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Заболевания</label>
+                <textarea rows="2" id="student-edit-diseases"></textarea>
+            </div>
+
+            <div class="field">
+                <label>Дата рождения</label>
+                <input type="date" id="student-edit-birthday"/>
+            </div>
+
+            <div class="inline fields">
+                <label>Детей в семье:</label>
+                <div class="field">
+                    <div class="ui radio checkbox" id="rad1">
+                        <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+                        <label>1</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox" id="rad2">
+                        <input type="radio" name="fruit" tabindex="0" class="hidden">
+                        <label>2</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox" id="rad3">
+                        <input type="radio" name="fruit" tabindex="0" class="hidden">
+                        <label>3</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox" id="rad4">
+                        <input type="radio" name="fruit" tabindex="0" class="hidden">
+                        <label>4</label>
+                    </div>
+                </div>
+            </div>
+            <div id="student-edit-error"></div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui cancel button">Отменить</div>
+        <div class="ui button" id="btn-student-edit">Обновить</div>
+    </div>
+</div>
