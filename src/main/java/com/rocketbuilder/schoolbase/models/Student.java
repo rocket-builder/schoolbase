@@ -34,6 +34,8 @@ public class Student {
     private Date birthday;
     private String avatarPath = "/img/defaultAvatar.png";
 
+    public Student() {}
+
     public Student(Set<Parent> parents, Groups groups, String firstname, String surname, String middlename, String hobby, int familyChildCount, HealthGroup healthGroup, GymGroup gymGroup, String diseases, Date birthday) {
         this.parents = parents;
         this.groups = groups;
@@ -109,5 +111,9 @@ public class Student {
     public void setStringDate(String birthday) throws ParseException { this.birthday = new SimpleDateFormat("yyyy-MM-dd").parse(birthday); }
     public String getInputDate() {
         return new SimpleDateFormat("yyy-MM-dd").format(birthday);
+    }
+
+    public int getAge() {
+        return new Date().getYear() - birthday.getYear();
     }
 }

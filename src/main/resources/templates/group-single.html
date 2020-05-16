@@ -8,19 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <link rel="stylesheet" th:href="@{css/master.css}">
+    <link rel="stylesheet" th:href="@{/css/master.css}">
 </head>
 <body>
 <div th:insert="components/header :: header"></div>
 
-<div class="ui masthead segment">
-    SEGMEEENT
+<div style="background: yellow;">
+    <h1 style="padding: 10em;" th:text="${group.title}"></h1>
 </div>
-<div class="ui four column stackable grid" style="margin: 0em;">
-    <div th:each="group : ${groups}" class="ui four wide column" th:classappend="${group.color}">
-        <h2 class="group card" th:text="${group.title}" th:href="'/group/'+${group.id}"></h2>
-    </div>
+<div class="ui four column stackable grid" style="margin: 0;" th:if="${group.getStudents().size() > 0}">
+    <a th:each="student : ${group.getStudents()}" class="ui four wide column" th:href="'/student/'+${student.id}" style="background: red;">
+        <h2 class="group card" style="font-size: 1.5em;padding-bottom: 10em;" th:text="${student.surname}+' '+${student.firstname}+', '+${student.getAge()}+' лет'"></h2>
+    </a>
 </div>
+<h3 style="margin: 0;padding: 12em;color: rgba(0,0,0,.2);background: #c4c4c40a;text-align: center;" th:if="${group.getStudents().size() == 0}">
+    В этом классе еще нет учащихся :(
+</h3>
 <div th:insert="components/footer :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>

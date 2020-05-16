@@ -9,7 +9,9 @@ body {
     color: rgba(0,0,0,.87) !important;
 }
 
-a {
+a.underlined {
+    user-select: none;
+    cursor: pointer;
     text-decoration: none !important;
     background-image: linear-gradient(#2185d0, #2185d0) !important;
     background-position: 0% 100% !important;
@@ -17,11 +19,13 @@ a {
     background-size: 0% 4px !important;
     transition: background-size .3s !important;
 }
-a:hover, a:focus {
+a.underlined:hover, a.underlined:focus {
     background-size: 100% 4px !important;
 }
 
 .group.card{
+
+    font-family: 'Rubik Mono One', sans-serif;
     color:white;
     font-size: 4em;
     padding: 0em 0em 5em 0.2em;

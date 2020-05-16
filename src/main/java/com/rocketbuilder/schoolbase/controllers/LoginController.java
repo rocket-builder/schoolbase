@@ -47,7 +47,7 @@ public class LoginController {
         session.setAttribute("userId", user.getId());
         session.setAttribute("role", user.getRole().toString());
 
-        return new Gson().toJson(new Response("Success", true, user.getId()));
+        return new Gson().toJson(new Response("Success", false, user.getId()));
     }
 
     @GetMapping("/logout")

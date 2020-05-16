@@ -77,17 +77,17 @@ public class StudentController {
             @RequestParam String firstname,
             @RequestParam String surname,
             @RequestParam String middlename,
-            @RequestParam String groupTitle,
+            @RequestParam String grouptitle,
             @RequestParam String hobby,
-            @RequestParam int familyChildCount,
-            @RequestParam String healthGroup,
-            @RequestParam String gymGroup,
+            @RequestParam int familychildcount,
+            @RequestParam String healthgroup,
+            @RequestParam String gymgroup,
             @RequestParam String diseases,
             @RequestParam String birthday
             ) throws ParseException {
 
-        Groups group = groupRepos.findDistinctByTitle(groupTitle);
-        Student student = new Student(group, firstname, surname, middlename, hobby, familyChildCount, HealthGroup.valueOf(healthGroup.toUpperCase()), GymGroup.valueOf(gymGroup.toUpperCase()), diseases, birthday);
+        Groups group = groupRepos.findDistinctByTitle(grouptitle);
+        Student student = new Student(group, firstname, surname, middlename, hobby, familychildcount, HealthGroup.valueOf(healthgroup.toUpperCase()), GymGroup.valueOf(gymgroup.toUpperCase()), diseases, birthday);
 
         studentRepos.save(student);
         return new Gson().toJson(new Response("Успешно добавлено", false));

@@ -11,18 +11,24 @@
     <link rel="stylesheet" th:href="@{css/master.css}">
 </head>
 <body>
-<div th:insert="components/header :: header"></div>
 
-<div class="ui masthead segment">
-    SEGMEEENT
-</div>
-<div class="ui four column stackable grid" style="margin: 0em;">
-    <div th:each="group : ${groups}" class="ui four wide column" th:classappend="${group.color}">
-        <h2 class="group card" th:text="${group.title}" th:href="'/group/'+${group.id}"></h2>
+<div class="pusher">
+    <div th:insert="components/header :: header"></div>
+
+    <div class="ui masthead segment">
+        SEGMEEENT
     </div>
+    <div class="ui four column stackable grid" style="margin: 0em;">
+        <a th:each="group : ${groups}" class="ui four wide column" th:classappend="${group.color}" th:href="'/group/'+${group.id}">
+            <h2 class="group card" th:text="${group.title}"></h2>
+        </a>
+    </div>
+    <div th:insert="components/footer :: footer"></div>
 </div>
-<div th:insert="components/footer :: footer"></div>
+<div th:insert="components/student-add-modal :: modal"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script th:src="@{js/master.js}"></script>
+<script th:src="@{js/handlers/student-add-handler.js}"></script>
 </body>
 </html>
