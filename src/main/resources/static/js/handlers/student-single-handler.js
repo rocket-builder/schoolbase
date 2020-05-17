@@ -21,7 +21,23 @@ $('.btn-student-single').click(function () {
                 $('#student-single-birthday').html(student.birthday);
                 $('#student-single-healthgroup').html(getHealthGroup(student));
                 $('#student-single-gymgroup').html(getGymGroup(student));
-                $('#student-single-parents').html(student.parents);
+
+                let parentsHTML = "Информация отсутствует";
+                if(student.parents.length !== 0) {
+                    parentsHTML = "";
+                    $.each(student.parents, function(index, parent){
+
+                        if (parent.firstname !== '' && parent.surname !== '' && parent.middlename !== '' && parent.number !== '')
+                        {
+                            parentsHTML+=
+                                "<p>" + parent.surname + " " + parent.firstname + " " + parent.middlename + "<br>" +
+                                "<b>Место работы</b><br>" + parent.job + "<br>" +
+                                "<b>Телефон </b>" + parent.number +
+                                "</p>";
+                        }
+                    });
+                }
+                $('#student-single-parents').html(parentsHTML);
 
                 $('#student-single-modal').modal('show');
             }

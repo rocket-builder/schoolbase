@@ -7,4 +7,5 @@ public interface UserRepos extends CrudRepository<User, Long> {
 
     boolean existsByLogin(String login);
     User findByLogin(String login);
+    User findById(long id);
 }

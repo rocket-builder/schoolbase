@@ -7,9 +7,7 @@ import com.rocketbuilder.schoolbase.enums.HealthGroup;
 import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Student {
@@ -18,8 +16,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany(mappedBy="student")
-    private Set<Parent> parents = new HashSet<>();
+    @OneToMany(mappedBy="student", cascade = CascadeType.ALL)
+    private List<Parent> parents = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name="groups_id", nullable=false)
@@ -37,7 +35,7 @@ public class Student {
 
     public Student() {}
 
-    public Student(Set<Parent> parents, Groups groups, String firstname, String surname, String middlename, String hobby, int familyChildCount, HealthGroup healthGroup, GymGroup gymGroup, String diseases, Date birthday) {
+    public Student(List<Parent> parents, Groups groups, String firstname, String surname, String middlename, String hobby, int familyChildCount, HealthGroup healthGroup, GymGroup gymGroup, String diseases, Date birthday) {
         this.parents = parents;
         this.groups = groups;
         this.firstname = firstname;
@@ -69,8 +67,8 @@ public class Student {
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
-    public Set<Parent> getParents() { return parents; }
-    public void setParents(Set<Parent> parents) { this.parents = parents; }
+    public List<Parent> getParents() { return parents; }
+    public void setParents(List<Parent> parents) { this.parents = parents; }
 
     public Groups getGroups() { return groups; }
     public void setGroups(Groups groups) { this.groups = groups; }

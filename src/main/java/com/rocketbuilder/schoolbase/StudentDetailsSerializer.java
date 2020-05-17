@@ -27,11 +27,17 @@ public class StudentDetailsSerializer implements JsonSerializer<Student> {
 
         JsonArray parents = new JsonArray();
 
-        for(Parent parent : student.getParents()) {
-            parents.add(
-                    parent != null ?
-                            context.serialize(parent) : null
-            );
+        if(student.getParents().size() != 0) {
+            for (Parent parent : student.getParents()){
+                JsonObject parentObj = new JsonObject();
+                parentObj.addProperty("firstname", parent.getFirstname());
+                parentObj.addProperty("surname", parent.getSurname());
+                parentObj.addProperty("middlename", parent.getMiddlename());
+                parentObj.addProperty("job", parent.getJob());
+                parentObj.addProperty("number", parent.getNumber());
+
+                parents.add(parentObj);
+            }
         }
         result.add("parents", parents);
 

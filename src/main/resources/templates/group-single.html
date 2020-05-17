@@ -33,7 +33,7 @@
         <div th:if="${session.role.toString() == 'ADMIN'}">
             <i class="pencil icon btn-student-edit-modal" th:id="'edit'+${student.id}"></i>
             <i class="trash icon btn-student-delete-modal" th:id="'del'+${student.id}"></i>
-            <i class="users icon btn-parents-modal" th:id="'parents'+${student.id}"></i>
+            <i th:class="${student.parents.size() != 0? 'users icon btn-parents-modal-update' : 'users icon btn-parents-modal'}" th:id="'parents'+${student.id}"></i>
 
             <input type="file" th:id="'avatar'+${student.id}" style="display: none;" class="inp-avatar" enctype="multipart/form-data"/>
             <label th:for="'avatar'+${student.id}">
@@ -51,6 +51,7 @@
 <div th:insert="components/approve-modal :: #approve-modal"></div>
 <div th:insert="components/student-single-modal :: #student-single-modal"></div>
 <div th:insert="components/student-add-parents-modal :: #modal-parent-add"></div>
+<div th:insert="components/student-edit-parents-modal :: #modal-parent-edit"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
@@ -59,5 +60,6 @@
 <script th:src="@{/js/handlers/student-add-handler.js}"></script>
 <script th:src="@{/js/handlers/student-single-handler.js}"></script>
 <script th:src="@{/js/handlers/parent-add-handler.js}"></script>
+<script th:src="@{/js/handlers/parent-edit-handler.js}"></script>
 </body>
 </html>

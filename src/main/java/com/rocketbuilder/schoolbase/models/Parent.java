@@ -39,16 +39,16 @@ public class Parent {
     public Parent() {}
 
     public String getFirstname() { return firstname; }
-    public void setFirstname(String firstname) { firstname = firstname; }
+    public void setFirstname(String firstname) { this.firstname = firstname; }
 
     public String getSurname() { return surname; }
-    public void setSurname(String surname) { surname = surname; }
+    public void setSurname(String surname) { this.surname = surname; }
 
     public String getJob() { return job; }
-    public void setJob(String job) { job = job; }
+    public void setJob(String job) { this.job = job; }
 
     public String getNumber() { return number; };
-    public void setNumber(String number) { number = number; }
+    public void setNumber(String number) { this.number = number; }
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
