@@ -26,10 +26,13 @@
     <div th:insert="components/footer :: footer"></div>
 </div>
 <div th:insert="components/student-add-modal :: modal"></div>
+<div th:insert="components/teacher-add-modal :: #modal-teacher-add"></div>
 <div th:insert="components/approve-modal :: #approve-modal"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 <script th:src="@{js/master.js}"></script>
 <script th:src="@{js/handlers/student-add-handler.js}"></script>
+<script th:src="@{js/handlers/teacher-add-handler.js}"></script>
 </body>
 </html>

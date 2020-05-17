@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,13 +48,16 @@ public class MainController {
     }
 
     @GetMapping("/home")
-    public String home(Model model){
+    public String home(Model model, HttpSession session){
 
-        List<Groups> groups = groupRepos.findAll();
+        if(session.getAttribute("login") != null) {
+            List<Groups> groups = groupRepos.findAll();
 
-        groups.forEach(group -> group.setColor(colors.get(getRandom())));
+            groups.forEach(group -> group.setColor(colors.get(getRandom())));
 
-        model.addAttribute("groups", groups);
-        return "home";
+            model.addAttribute("groups", groups);
+            return "home";
+        }
+        return "login";
     }
 }

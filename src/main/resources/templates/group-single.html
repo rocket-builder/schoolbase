@@ -15,6 +15,14 @@
 
 <div style="background: yellow;">
     <h1 style="padding: 10em;" th:text="${group.title}"></h1>
+    <div th:if="${group.teacher != null}" id="teacher-content">
+        <h2>Классный руководитель</h2>
+        <p th:text="${group.teacher.surname} + ' ' + ${group.teacher.firstname} + ' ' + ${group.teacher.middlename}"></p>
+        <h2>Номер телефона</h2>
+        <p th:text="${group.teacher.number}"></p>
+        <div class="btn-teacher-edit" th:id="'teacherEdit'+${group.teacher.id}">Редактировать</div>
+        <div class="btn-teacher-delete" th:id="'teacherDelete'+${group.teacher.id}">Удалить</div>
+    </div>
 </div>
 <div class="ui four column stackable grid" style="margin: 0;background: #fdfdfd;" th:if="${group.getStudents().size() > 0}">
     <div th:each="student : ${group.getStudents()}" class="ui four wide column" th:id="'student'+${student.id}" style="padding: 0.5em;background: white;border: solid #fdfdfd 0.5em;">
@@ -52,6 +60,8 @@
 <div th:insert="components/student-single-modal :: #student-single-modal"></div>
 <div th:insert="components/student-add-parents-modal :: #modal-parent-add"></div>
 <div th:insert="components/student-edit-parents-modal :: #modal-parent-edit"></div>
+<div th:insert="components/teacher-add-modal :: #modal-teacher-add"></div>
+<div th:insert="components/teacher-edit-modal :: #modal-teacher-edit"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
@@ -61,5 +71,7 @@
 <script th:src="@{/js/handlers/student-single-handler.js}"></script>
 <script th:src="@{/js/handlers/parent-add-handler.js}"></script>
 <script th:src="@{/js/handlers/parent-edit-handler.js}"></script>
+<script th:src="@{/js/handlers/teacher-add-handler.js}"></script>
+<script th:src="@{/js/handlers/teacher-edit-handler.js}"></script>
 </body>
 </html>

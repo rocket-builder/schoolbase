@@ -31,6 +31,32 @@ $('.btn-student-delete-modal').click(function () {
         .modal('show');
 });
 
+$('.btn-teacher-delete').click(function () {
+
+    let id = $(this).attr('id').split('teacherDelete').pop();
+    $('#approve-modal').modal({
+        onDeny    : function(){
+            $(this).modal('hide');
+        },
+        onApprove : function() {
+            $.ajax({
+                type: "POST",
+                url: "/teacher/delete",
+                data: { id: id },
+                success: function(response) {
+                    console.log('SUCCESS: ' + response);
+                    $('#approve-modal').modal('hide');
+                    $('#teacher-content').transition('fade out');
+                },
+                error: function(response) {
+                    console.log('ERROR: ' + response);
+                }
+            });
+        }
+    })
+        .modal('show');
+});
+
 $('select.dropdown').dropdown();
 
 $('.ui.radio.checkbox').checkbox();

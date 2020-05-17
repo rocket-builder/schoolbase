@@ -46,7 +46,7 @@ public class GroupController {
                 long teacherId = Long.parseLong(session.getAttribute("userId").toString());
                 Teacher teacher = teacherRepos.findById(teacherId);
 
-                if(group.getTeacher().equals(teacher)) {
+                if(group.getTeacher() != null && group.getTeacher().equals(teacher)) {
                     model.addAttribute("group", group);
                     return "group-single";
                 } else

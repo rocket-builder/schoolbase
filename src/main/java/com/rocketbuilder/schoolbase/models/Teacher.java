@@ -12,7 +12,7 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(mappedBy = "teacher")
+    @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
     private Groups groups;
 
     private String firstname, surname, middlename;
@@ -23,6 +23,8 @@ public class Teacher {
 
     private UserRole role = UserRole.TEACHER;
 
+    public Teacher() {}
+
     public Teacher(Groups groups, String firstname, String surname, String middlename, String number, String avatarPath, String login, String password) {
         this.groups = groups;
         this.firstname = firstname;
@@ -30,6 +32,16 @@ public class Teacher {
         this.middlename = middlename;
         this.number = number;
         this.avatarPath = avatarPath;
+        this.login = login;
+        this.password = password;
+    }
+
+    public Teacher(Groups group, String firstname, String surname, String middlename, String number, String login, String password) {
+        this.groups = group;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.middlename = middlename;
+        this.number = number;
         this.login = login;
         this.password = password;
     }

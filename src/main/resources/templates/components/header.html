@@ -8,8 +8,11 @@
         <div class="item" th:if="${session.role == 'ADMIN'}" id="btn-student-add-modal">
             <a class="underlined">Добавить Учащегося</a>
         </div>
-        <div class="left aligned item" th:if="${session.login == null}">
-            <a href="/login" class="underlined">Login</a>
+        <div class="item" th:if="${session.role == 'ADMIN'}" id="btn-teacher-add-modal">
+            <a class="underlined">Добавить Преподавателя</a>
+        </div>
+        <div class="left aligned item" th:if="${session.login != null}">
+            <a href="/logout" class="underlined">Выход</a>
         </div>
     </div>
 </div>
