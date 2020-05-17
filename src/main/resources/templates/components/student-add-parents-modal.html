@@ -1,0 +1,63 @@
+<div class="ui modal" id="modal-parent-add" th:fragment="modal">
+    <i class="close icon"></i>
+    <h3 class="header">
+        Добавление родителей
+    </h3>
+    <div class="content">
+        <h3>Отец</h3>
+        <div class="ui form">
+            <div class="fields">
+                <div class="field">
+                    <label>Имя</label>
+                    <input type="text" placeholder="Введите имя" id="parent-add-firstname">
+                </div>
+                <div class="field">
+                    <label>Фамилия</label>
+                    <input type="text" placeholder="Введите фамилию" id="parent-add-surname">
+                </div>
+                <div class="field">
+                    <label>Отчество</label>
+                    <input type="text" placeholder="Введите отчество" id="parent-add-middlename">
+                </div>
+            </div>
+            <div class="field">
+                <label>Место работы</label>
+                <textarea rows="2" id="parent-add-job"></textarea>
+            </div>
+            <div class="field">
+                <label>Номер телефона</label>
+                <input type="text" id="parent-add-number" />
+            </div>
+        </div>
+
+        <h3>Мать</h3>
+        <div class="ui form">
+            <div class="fields">
+                <div class="field">
+                    <label>Имя</label>
+                    <input type="text" placeholder="Введите имя" id="parent-add-firstname2">
+                </div>
+                <div class="field">
+                    <label>Фамилия</label>
+                    <input type="text" placeholder="Введите фамилию" id="parent-add-surname2">
+                </div>
+                <div class="field">
+                    <label>Отчество</label>
+                    <input type="text" placeholder="Введите отчество" id="parent-add-middlename2">
+                </div>
+            </div>
+            <div class="field">
+                <label>Место работы</label>
+                <textarea rows="2" id="parent-add-job2"></textarea>
+            </div>
+            <div class="field">
+                <label>Номер телефона</label>
+                <input type="text" id="parent-add-number2" />
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui cancel button">Отменить</div>
+        <div class="ui button" id="btn-parent-add">Добавить</div>
+    </div>
+</div>
