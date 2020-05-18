@@ -1,21 +1,39 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <title>schoolbase</title>
+    <link rel="icon" type="image/png" th:href="@{/res/logo.png}" />
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/master.css}">
 </head>
-<body>
-
-
-<input id="login-username" placeholder="login"/>
-<input id="login-password" placeholder="password" type="password">
-<button id="btn-login">Login</button>
-<div id="login-error"></div>
-
+<body style="background-color: whitesmoke;">
+<div class="pusher">
+    <div style="padding: 15em;">
+        <div class="ui container" style="text-align: center;">
+            <h2>SCHOOLBASE</h2>
+            <p class="description">Войдите в свой аккаунт, чтобы продолжить</p>
+            <div class="ui form" style="width: 10em;margin: 0 auto;">
+                <div class="field">
+                    <label>Логин</label>
+                    <input id="login-username" placeholder="Введите логин"/>
+                </div>
+                <div class="field">
+                    <label>Пароль</label>
+                    <input id="login-password" placeholder="Введите пароль" type="password"/>
+                </div>
+                <button class="ui fluid blue button" id="btn-login">Войти</button>
+                <div id="login-error"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 <script th:src="@{js/master.js}"></script>
 <script th:src="@{js/handlers/login-handler.js}"></script>
 </body>

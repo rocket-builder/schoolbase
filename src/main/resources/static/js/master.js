@@ -85,3 +85,23 @@ $('.inp-avatar').change(function () {
         }
     });
 });
+
+$('.ui.search')
+    .search({
+        minCharacters : 3,
+        apiSettings   : {
+            onResponse: function(data) {
+                let response = {
+                    results: []
+                };
+
+                $.each(data, function (index, item) {
+                    response.results.push(item);
+                });
+                response.results.reverse();
+                return response;
+            },
+            url: '/student/search?match={query}'
+        }
+    })
+;

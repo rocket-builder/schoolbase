@@ -17,24 +17,12 @@ public class Teacher {
 
     private String firstname, surname, middlename;
     private String number;
-    private String avatarPath;
     private String password;
     private String login;
 
     private UserRole role = UserRole.TEACHER;
 
     public Teacher() {}
-
-    public Teacher(Groups groups, String firstname, String surname, String middlename, String number, String avatarPath, String login, String password) {
-        this.groups = groups;
-        this.firstname = firstname;
-        this.surname = surname;
-        this.middlename = middlename;
-        this.number = number;
-        this.avatarPath = avatarPath;
-        this.login = login;
-        this.password = password;
-    }
 
     public Teacher(Groups group, String firstname, String surname, String middlename, String number, String login, String password) {
         this.groups = group;
@@ -63,9 +51,6 @@ public class Teacher {
 
     public String getNumber() { return number; }
     public void setNumber(String number) { this.number = number; }
-
-    public String getAvatarPath() { return avatarPath; }
-    public void setAvatarPath(String avatarPath) { this.avatarPath = avatarPath; }
 
     public String getLogin() { return login; }
     public void setLogin(String login) { this.login = login; }

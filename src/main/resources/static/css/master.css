@@ -10,8 +10,9 @@ body {
 }
 
 a.underlined {
-    user-select: none;
-    cursor: pointer;
+    user-select: none !important;
+    cursor: pointer !important;
+    color: rgba(0,0,0,.87) !important;
     text-decoration: none !important;
     background-image: linear-gradient(#2185d0, #2185d0) !important;
     background-position: 0% 100% !important;
@@ -41,5 +42,15 @@ a.underlined:hover, a.underlined:focus {
 
 h2 span {
     padding: 0 10px;
-    background: rgba(37,219,237,0.8);
+    background: #2185d0;
+}
+
+.landing{
+    width: 100%;
+    height: 20em;
+    margin: 0;
+}
+
+.menu.container.item {
+    padding: 1em !important;
 }

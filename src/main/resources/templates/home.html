@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>schoolbase</title>
+    <link rel="icon" type="image/png" th:href="@{/res/logo.png}" />
     <!-- Standard Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,8 +16,11 @@
 <div class="pusher">
     <div th:insert="components/header :: header"></div>
 
-    <div class="ui masthead segment">
-        SEGMEEENT
+    <div class="landing">
+        <div class="ui container" style="text-align: center; align-content: center;">
+            <h1 style="font-size: 4em;padding-top: 2em;">SCHOOLBASE</h1>
+            <p class="description">Schoolbase - проект представляющий собой базу школьных учащихся.</p>
+        </div>
     </div>
     <div class="ui four column stackable grid" style="margin: 0em;">
         <a th:each="group : ${groups}" class="ui four wide column" th:classappend="${group.color}" th:href="'/group/'+${group.id}">

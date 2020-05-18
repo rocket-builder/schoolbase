@@ -66,7 +66,9 @@ public class LoginController {
             session.setAttribute("login", login);
             session.setAttribute("userId", teacher.getId());
             session.setAttribute("role", teacher.getRole().toString());
-
+            if (teacher.getGroups() != null) {
+                session.setAttribute("groupId", teacher.getGroups().getId());
+            }
             return new Gson().toJson(new Response("Success", false, teacher.getId()));
         }
     }

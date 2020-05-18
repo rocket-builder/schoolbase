@@ -1,18 +1,19 @@
-<div class="ui fixed pointing menu" th:fragment="header">
+<div class="ui fixed text menu" th:fragment="header" style="background: white;padding: 1em;">
     <div class="ui container">
-        <a href="#" class="header item">
-            <img class="logo" src="assets/images/logo.png">
-            Project Name
-        </a>
-        <a href="#" class="item">Home</a>
-        <div class="item" th:if="${session.role == 'ADMIN'}" id="btn-student-add-modal">
-            <a class="underlined">Добавить Учащегося</a>
+        <a href="/home" class="header item" style="color: black;"><h1>SCHOOLBASE</h1></a>
+        <a href="/home" class="item underlined">Домой</a>
+        <a class="item underlined" th:if="${session.role == 'TEACHER' && session.groupId != null}" th:href="'/group/'+${session.groupId}">Мой класс</a>
+        <div class="item" th:if="${session.role == 'ADMIN' || session.role == 'DIRECTOR'}">
+            <div class="ui search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="поиск.." id="inp-global-search">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results" id="search-results"></div>
+            </div>
         </div>
-        <div class="item" th:if="${session.role == 'ADMIN'}" id="btn-teacher-add-modal">
-            <a class="underlined">Добавить Преподавателя</a>
-        </div>
-        <div class="left aligned item" th:if="${session.login != null}">
-            <a href="/logout" class="underlined">Выход</a>
-        </div>
+        <a class="item underlined" th:if="${session.role == 'ADMIN'}" id="btn-student-add-modal">Добавить Учащегося</a>
+        <a class="item underlined" th:if="${session.role == 'ADMIN'}" id="btn-teacher-add-modal">Добавить Преподавателя</a>
+        <a href="/logout" class="right aligned item underlined" th:if="${session.login != null}">Выход</a>
     </div>
 </div>

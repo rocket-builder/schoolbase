@@ -25,7 +25,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class StudentController {
@@ -162,5 +164,22 @@ public class StudentController {
         studentRepos.deleteById(id);
 
         return new Gson().toJson(new Response("Успешно удалено", false));
+    }
+
+    @GetMapping("/student/search")
+    @ResponseBody
+    public Object[] eventSearch(@RequestParam String match) {
+
+        List<Student> students = studentRepos.findBySurnameContainsIgnoreCase(match);
+        ArrayList<SearchItem> results = new ArrayList<>();
+        students.forEach(student -> results.add(
+                new SearchItem(
+                     student.getSurname() + " " + student.getFirstname(),
+                     "/group/"+student.getGroups().getId(),
+                     student.getAvatarPath()
+                )
+        ));
+        //return new Gson().toJson(results);
+        return results.toArray();
     }
 }

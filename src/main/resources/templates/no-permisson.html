@@ -1,18 +1,40 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>schoolbase</title>
+    <link rel="icon" type="image/png" th:href="@{/res/logo.png}" />
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/master.css}">
 </head>
 <body>
 
+<div class="pusher">
+    <div th:insert="components/header :: header"></div>
 
-no permission
-
-
+    <div class="landing">
+        <div class="ui container" style="text-align: center; align-content: center;">
+            <h1 style="font-size: 4em;padding-top: 2em;">SCHOOLBASE</h1>
+            <p class="description">Schoolbase - проект представляющий собой базу школьных учащихся.</p>
+        </div>
+    </div>
+    <h3 style="margin: 0;padding: 12em;color: rgba(0,0,0,.2);background: #c4c4c40a;text-align: center;">
+        У вас недостаточно полномочий для этого действия :(
+    </h3>
+    <div th:insert="components/footer :: footer"></div>
+</div>
+<div th:insert="components/student-add-modal :: modal"></div>
+<div th:insert="components/teacher-add-modal :: #modal-teacher-add"></div>
+<div th:insert="components/approve-modal :: #approve-modal"></div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+<script th:src="@{js/master.js}"></script>
+<script th:src="@{js/handlers/student-add-handler.js}"></script>
+<script th:src="@{js/handlers/teacher-add-handler.js}"></script>
 </body>
 </html>
